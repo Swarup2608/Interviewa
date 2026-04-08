@@ -1,0 +1,24 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "The backend for the Interviewa portal",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Swarup2608/Interviewa.git"
+  },
+  "keywords": [
+    "Interviewa",
+    "ai",
+    "powered",
+    "interview"
+  ],
+  "author": "Swarup",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
