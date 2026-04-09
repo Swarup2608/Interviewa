@@ -1,8 +1,9 @@
 import Background from "@/components/Background";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import NeuralArchitecture from "@/components/NeuralArchitecture";
 import Features from "@/components/Features";
-import Highlight from "@/components/Highlight";
+import Cta from "@/components/Cta";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -10,10 +11,15 @@ export default function Home() {
     <>
       <Background />
       <Navbar />
-      <main className="relative z-10 w-full overflow-hidden">
+      {/* Scanline effect for extra tech vibe */}
+      <div className="fixed inset-0 pointer-events-none z-[100] overflow-hidden">
+        <div className="scanline"></div>
+      </div>
+      <main className="relative z-10 w-full overflow-hidden blueprint-grid pt-25">
         <Hero />
+        <NeuralArchitecture />
         <Features />
-        <Highlight />
+        <Cta />
       </main>
       <Footer />
     </>

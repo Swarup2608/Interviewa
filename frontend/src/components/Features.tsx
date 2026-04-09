@@ -1,3 +1,5 @@
+import { ArrowRight, Video, Zap, Briefcase, Activity } from "lucide-react";
+
 export default function Features() {
   return (
     <section className="py-32 px-8 md:px-16 relative" id="solutions">
@@ -9,7 +11,7 @@ export default function Features() {
             <p className="font-body text-lg text-on-surface-variant/80">Our multi-layered neural engine analyzes biometric data, semantic structures, and delivery patterns to provide unparalleled growth insights.</p>
           </div>
           <button className="text-secondary font-bold flex items-center gap-3 hover:gap-5 transition-all text-lg group">
-            Explore All Features <span className="material-symbols-outlined transition-transform group-hover:translate-x-1">trending_flat</span>
+            Explore All Features <ArrowRight className="transition-transform group-hover:translate-x-1 w-5 h-5" />
           </button>
         </div>
         
@@ -18,7 +20,7 @@ export default function Features() {
             <div className="absolute -top-20 -right-20 w-80 h-80 bg-primary-dim/20 rounded-full blur-[80px] group-hover:bg-primary-dim/30 transition-all duration-700"></div>
             <div className="relative z-10">
               <div className="w-20 h-20 rounded-3xl bg-primary-dim/15 border border-primary/20 flex items-center justify-center mb-10 shadow-lg">
-                <span className="material-symbols-outlined text-primary text-4xl">videocam</span>
+                <Video className="text-primary w-9 h-9" />
               </div>
               <h3 className="font-headline text-4xl font-bold mb-6">Real-time AI interviews</h3>
               <p className="font-body text-on-surface-variant text-xl leading-relaxed">Experience hyper-realistic video interviews where the AI adapts its questions dynamically based on your previous responses and emotional cues.</p>
@@ -32,7 +34,7 @@ export default function Features() {
           <div className="md:col-span-6 glass-card rounded-[2.5rem] p-12 flex items-center gap-10 group relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-secondary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div className="w-20 h-20 shrink-0 rounded-3xl bg-secondary-container/15 border border-secondary/20 flex items-center justify-center shadow-lg">
-              <span className="material-symbols-outlined text-secondary text-4xl">bolt</span>
+              <Zap className="text-secondary w-9 h-9" />
             </div>
             <div>
               <h3 className="font-headline text-3xl font-bold mb-4">Smart feedback system</h3>
@@ -42,14 +44,14 @@ export default function Features() {
           
           <div className="md:col-span-3 glass-card rounded-[2.5rem] p-8 flex flex-col justify-center text-center group border-tertiary/20 hover:border-tertiary/40 transition-all">
             <div className="w-16 h-16 rounded-2xl bg-tertiary-container/10 mx-auto mb-6 flex items-center justify-center">
-              <span className="material-symbols-outlined text-tertiary text-4xl">work</span>
+              <Briefcase className="text-tertiary w-9 h-9" />
             </div>
             <h3 className="font-headline text-xl font-bold">Role-based contexts</h3>
           </div>
           
           <div className="md:col-span-3 glass-card rounded-[2.5rem] p-8 flex flex-col justify-center text-center group border-primary/20 hover:border-primary/40 transition-all">
             <div className="w-16 h-16 rounded-2xl bg-primary-container/10 mx-auto mb-6 flex items-center justify-center">
-              <span className="material-symbols-outlined text-primary text-4xl">analytics</span>
+              <Activity className="text-primary w-9 h-9" />
             </div>
             <h3 className="font-headline text-xl font-bold">Progress analytics</h3>
           </div>

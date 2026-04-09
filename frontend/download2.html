@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>InterviewAI | The Future of Career Prep</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700;800&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed-variant": "#73004b",
+                      "secondary-dim": "#40ceed",
+                      "on-primary": "#3c0089",
+                      "inverse-on-surface": "#4d556b",
+                      "secondary-fixed-dim": "#48d4f3",
+                      "surface-tint": "#bd9dff",
+                      "inverse-primary": "#742fe5",
+                      "secondary-container": "#00687a",
+                      "primary-fixed-dim": "#a67aff",
+                      "on-error-container": "#ffb2b9",
+                      "background": "#030712",
+                      "tertiary-container": "#f673b7",
+                      "surface-bright": "#1f2b49",
+                      "tertiary-fixed": "#ff8bc5",
+                      "on-tertiary-fixed": "#360021",
+                      "tertiary-dim": "#f271b5",
+                      "on-surface-variant": "#a3aac4",
+                      "surface-variant": "#111827",
+                      "outline-variant": "#374151",
+                      "secondary": "#22d3ee",
+                      "surface-container": "#0f172a",
+                      "tertiary-fixed-dim": "#f976ba",
+                      "primary-container": "#a855f7",
+                      "surface": "#030712",
+                      "on-primary-fixed-variant": "#390083",
+                      "on-secondary-container": "#ecfaff",
+                      "on-error": "#490013",
+                      "primary-dim": "#9333ea",
+                      "error-dim": "#d73357",
+                      "on-background": "#f3f4f6",
+                      "error-container": "#a70138",
+                      "outline": "#4b5563",
+                      "on-secondary-fixed": "#003a45",
+                      "error": "#ef4444",
+                      "surface-container-lowest": "#000000",
+                      "on-surface": "#f3f4f6",
+                      "surface-dim": "#030712",
+                      "primary": "#a855f7",
+                      "tertiary": "#ec4899",
+                      "primary-fixed": "#c084fc",
+                      "surface-container-highest": "#1f2937",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-high": "#111827",
+                      "secondary-fixed": "#67e8f9",
+                      "inverse-surface": "#f9fafb",
+                      "surface-container-low": "#0b0f1a",
+                      "on-secondary-fixed-variant": "#0891b2",
+                      "on-tertiary-container": "#4a002f",
+                      "on-primary-fixed": "#000000",
+                      "on-primary-container": "#ffffff",
+                      "on-secondary": "#0e7490"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "1rem",
+                      "2xl": "1.5rem",
+                      "3xl": "2.5rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Space Grotesk"],
+                      "body": ["Manrope"],
+                      "label": ["Plus Jakarta Sans"]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(17, 24, 39, 0.6);
+            backdrop-filter: blur(40px) saturate(180%);
+            -webkit-backdrop-filter: blur(40px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.125);
+        }
+        .glass-panel-heavy {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(64px) saturate(200%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+        }
+        .glowing-shadow-primary {
+            box-shadow: 0 0 80px rgba(168, 85, 247, 0.25);
+        }
+        .blueprint-grid {
+            background-image: 
+                radial-gradient(circle at 2px 2px, rgba(168, 85, 247, 0.05) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+        .neural-line {
+            background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.5), transparent);
+            height: 1px;
+            width: 100%;
+            position: absolute;
+        }
+        .scanline {
+            width: 100%;
+            height: 100px;
+            z-index: 5;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(34, 211, 238, 0.05) 50%, rgba(0, 0, 0, 0) 100%);
+            opacity: 0.1;
+            position: absolute;
+            bottom: 100%;
+            animation: scanline 10s linear infinite;
+        }
+        @keyframes scanline {
+            0% { bottom: 100%; }
+            100% { bottom: -100px; }
+        }
+        .float-anim {
+            animation: floating 6s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary/40 selection:text-white antialiased">
+<!-- Scanline effect for extra tech vibe -->
+<div class="fixed inset-0 pointer-events-none z-[100] overflow-hidden">
+<div class="scanline"></div>
+</div>
+<!-- Background Light Leaks -->
+<div class="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+<div class="absolute -top-[20%] -left-[10%] w-[60%] h-[60%] bg-primary/20 blur-[160px] rounded-full mix-blend-screen"></div>
+<div class="absolute top-[30%] -right-[10%] w-[50%] h-[50%] bg-secondary/15 blur-[140px] rounded-full mix-blend-screen"></div>
+<div class="absolute -bottom-[10%] left-[20%] w-[40%] h-[40%] bg-tertiary/10 blur-[120px] rounded-full mix-blend-screen"></div>
+</div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-slate-950/60 backdrop-blur-2xl border-b border-white/10">
+<div class="flex justify-between items-center w-full px-8 py-5 max-w-full">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-[0_0_20px_rgba(168,85,247,0.4)]">
+<span class="material-symbols-outlined text-white font-bold">bolt</span>
+</div>
+<div class="text-2xl font-bold tracking-tighter bg-gradient-to-r from-primary via-secondary to-tertiary bg-clip-text text-transparent font-headline">
+                    InterviewAI
+                </div>
+</div>
+<div class="hidden md:flex items-center gap-10 font-label text-xs font-bold uppercase tracking-widest">
+<a class="text-primary border-b-2 border-primary pb-1 transition-all" href="#">Simulator</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Neural Prep</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Insights</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Pricing</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-white/5 border border-white/10 hover:bg-white/10 px-6 py-2.5 rounded-full font-label text-xs font-bold uppercase tracking-widest text-white transition-all">
+                    Login
+                </button>
+<button class="bg-gradient-to-r from-primary to-primary-dim px-8 py-2.5 rounded-full font-label text-xs font-black uppercase tracking-widest text-on-primary-container shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:scale-105 active:scale-95 transition-all">
+                    Initialize
+                </button>
+</div>
+</div>
+</nav>
+<main class="relative pt-24 overflow-hidden blueprint-grid">
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center px-8 lg:px-24">
+<div class="container mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<!-- Hero Content -->
+<div class="lg:col-span-6 z-10 relative">
+<div class="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full glass-panel border-primary/30 text-primary text-[10px] font-label font-black tracking-[0.2em] uppercase">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+                        Neural Engine v4.0 Active
+                    </div>
+<h1 class="text-6xl lg:text-[100px] font-headline font-black leading-[0.9] tracking-tighter mb-8 bg-gradient-to-br from-white via-white/80 to-slate-500 bg-clip-text text-transparent">
+                        ACE YOUR <br/>
+<span class="text-primary italic text-glow">INTERVIEWS</span> <br/>
+                        WITH NEURAL AI
+                    </h1>
+<p class="text-lg md:text-xl text-slate-400 max-w-xl mb-12 font-body leading-relaxed border-l-2 border-primary/20 pl-6">
+                        Transcend traditional preparation with high-fidelity simulations. Our AI doesn't just ask questions—it analyzes your neural responses in real-time.
+                    </p>
+<div class="flex flex-wrap gap-6">
+<button class="px-10 py-5 rounded-full bg-gradient-to-r from-primary to-primary-dim text-on-primary-container font-label font-black uppercase tracking-[0.2em] shadow-[0_0_40px_rgba(168,85,247,0.5)] hover:shadow-[0_0_60px_rgba(168,85,247,0.7)] transition-all active:scale-95 group">
+<span class="flex items-center gap-2">
+                                Start Session
+                                <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</span>
+</button>
+<button class="px-10 py-5 rounded-full glass-panel-heavy border-secondary/40 text-secondary font-label font-black uppercase tracking-[0.2em] hover:bg-secondary/10 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined">play_circle</span>
+                            Demo
+                        </button>
+</div>
+<!-- Neural Stats Mini Feed -->
+<div class="mt-16 flex gap-12 border-t border-white/5 pt-8">
+<div>
+<div class="text-3xl font-headline font-bold text-white">99.8%</div>
+<div class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Accuracy</div>
+</div>
+<div>
+<div class="text-3xl font-headline font-bold text-white">40ms</div>
+<div class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Latency</div>
+</div>
+<div>
+<div class="text-3xl font-headline font-bold text-white">50k+</div>
+<div class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Successes</div>
+</div>
+</div>
+</div>
+<!-- Complex Floating Hero Interface -->
+<div class="lg:col-span-6 relative h-[700px] flex items-center justify-center">
+<!-- Orbits & Depth Layers -->
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-[500px] h-[500px] border border-white/5 rounded-full animate-[spin_20s_linear_infinite]"></div>
+<div class="absolute w-[400px] h-[400px] border border-primary/10 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
+</div>
+<!-- The Main AI Avatar -->
+<div class="relative z-20 w-full h-full float-anim">
+<div class="absolute inset-0 bg-primary/10 blur-[100px] rounded-full"></div>
+<img alt="Advanced AI" class="w-full h-full object-contain mix-blend-screen opacity-90 drop-shadow-[0_0_50px_rgba(168,85,247,0.3)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlctK4NVHPCqEpDCuV5YNNKWy0UHyqQxsGu6sD8iuwdSJ-eikHI8YtwqEHi_JwfMkTKSxfk2FiYWte1glZfDetvBb1Z5q_EUCLWSLwB70Mpsjzh3Wa3szd925InODuHIgBUBM4hW63LJERX6I6ZWfBsqwWT_k-4ZfL1HdYsvRyF7ts_OEPLBOmDibWRcc-UsyXGSQMXg_7gNm-fF3dwqDK8qTkm2lXQzn-pwirMK6hMund_ABpyWwOsHRZynmDs-7kOPgbKpgEQKKh"/>
+</div>
+<!-- Advanced Floating Glass Cards -->
+<!-- Top Left: Neural Pulse -->
+<div class="absolute top-10 left-0 glass-panel-heavy p-6 rounded-2xl border-secondary/30 w-72 shadow-2xl z-30 transform -rotate-3 hover:rotate-0 transition-transform duration-500 group">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary animate-pulse"></div>
+<span class="text-[10px] font-label font-bold uppercase tracking-widest text-secondary">Neural Link</span>
+</div>
+<span class="text-[10px] text-slate-500 font-mono">0x4F92</span>
+</div>
+<div class="space-y-3">
+<div class="flex items-end gap-1 h-8">
+<div class="bg-secondary/40 w-full h-1/2 rounded-t-sm group-hover:h-3/4 transition-all"></div>
+<div class="bg-secondary/40 w-full h-3/4 rounded-t-sm group-hover:h-full transition-all delay-75"></div>
+<div class="bg-secondary/60 w-full h-full rounded-t-sm group-hover:h-1/2 transition-all delay-100"></div>
+<div class="bg-secondary/40 w-full h-2/3 rounded-t-sm group-hover:h-full transition-all delay-150"></div>
+<div class="bg-secondary/40 w-full h-1/2 rounded-t-sm group-hover:h-2/3 transition-all delay-200"></div>
+</div>
+<p class="text-[11px] text-slate-300 font-medium">Calibrating biometric response...</p>
+</div>
+</div>
+<!-- Bottom Right: Live Feedback -->
+<div class="absolute bottom-20 right-0 glass-panel-heavy p-6 rounded-2xl border-primary/30 w-80 shadow-2xl z-30 transform rotate-3 hover:rotate-0 transition-transform duration-500">
+<div class="flex items-center gap-3 mb-4">
+<div class="p-2 rounded-lg bg-primary/10">
+<span class="material-symbols-outlined text-primary text-xl">cognition</span>
+</div>
+<div>
+<span class="block text-[10px] font-label font-bold uppercase tracking-widest text-primary">Insight Stream</span>
+<span class="block text-[10px] text-slate-500">Processing verbal metrics...</span>
+</div>
+</div>
+<p class="text-xs text-on-surface italic leading-relaxed border-l-2 border-primary/40 pl-4 py-1">
+                            "Neural pattern detected: High-level synthesis. <span class="text-primary font-bold">Optimization recommended:</span> Focus on quantification of Q3 results."
+                        </p>
+</div>
+<!-- Floating Data Points -->
+<div class="absolute top-1/4 right-10 glass-panel-heavy py-2 px-4 rounded-full border-white/20 text-[10px] font-mono text-secondary animate-bounce duration-[3000ms] flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">trending_up</span> CONFIDENCE: +12%
+                    </div>
+<div class="absolute bottom-1/4 left-10 glass-panel-heavy py-2 px-4 rounded-full border-white/20 text-[10px] font-mono text-tertiary animate-pulse duration-[2500ms] flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">warning</span> STRESS DETECTED
+                    </div>
+</div>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<section class="py-32 px-8 lg:px-24 relative">
+<!-- Background Decoration -->
+<div class="absolute top-1/2 right-0 w-[40%] h-[40%] bg-secondary/10 blur-[150px] -z-10 rounded-full"></div>
+<div class="container mx-auto">
+<div class="mb-20">
+<div class="flex items-center gap-4 mb-4">
+<div class="h-[2px] w-12 bg-secondary shadow-[0_0_10px_#22d3ee]"></div>
+<h2 class="text-4xl lg:text-6xl font-headline font-black tracking-tighter text-white">
+                            NEURAL <span class="text-secondary italic">ARCHITECTURE</span>
+</h2>
+</div>
+<p class="text-slate-400 max-w-2xl font-body">Deep integration of generative AI and biometric feedback loops creates a preparation environment indistinguishable from reality.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Feature 1: Wide -->
+<div class="md:col-span-8 group glass-panel-heavy rounded-3xl p-12 hover:border-secondary/40 transition-all duration-700 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-secondary/5 blur-[80px] group-hover:bg-secondary/10 transition-colors"></div>
+<div class="relative z-10">
+<div class="w-16 h-16 rounded-2xl bg-secondary/10 border border-secondary/20 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all">
+<span class="material-symbols-outlined text-secondary text-4xl">videocam</span>
+</div>
+<h3 class="text-3xl font-headline font-bold mb-6 text-white group-hover:text-secondary transition-colors">Adaptive AI Avatars</h3>
+<p class="text-slate-400 text-lg leading-relaxed max-w-xl">
+                                Our avatars react to your micro-expressions and tone. Utilizing 2026-grade emotional synthesis, they provide the most realistic confrontation prep in existence.
+                            </p>
+<div class="mt-10 flex gap-4">
+<div class="px-4 py-2 rounded-full border border-white/5 text-[10px] font-bold text-slate-500 uppercase tracking-widest">Lip-Sync</div>
+<div class="px-4 py-2 rounded-full border border-white/5 text-[10px] font-bold text-slate-500 uppercase tracking-widest">Expression Analysis</div>
+<div class="px-4 py-2 rounded-full border border-white/5 text-[10px] font-bold text-slate-500 uppercase tracking-widest">0-Latency</div>
+</div>
+</div>
+</div>
+<!-- Feature 2: Small -->
+<div class="md:col-span-4 group glass-panel-heavy rounded-3xl p-12 hover:border-primary/40 transition-all duration-700 relative overflow-hidden">
+<div class="absolute -bottom-10 -left-10 w-40 h-40 bg-primary/5 blur-[60px]"></div>
+<div class="relative z-10">
+<div class="w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-8 group-hover:-translate-y-2 transition-transform">
+<span class="material-symbols-outlined text-primary text-4xl">analytics</span>
+</div>
+<h3 class="text-2xl font-headline font-bold mb-4 text-white">Quantum Feedback</h3>
+<p class="text-slate-400 leading-relaxed">
+                                Instantaneous decomposition of your performance into 150+ metrics. Actionable intelligence for your evolution.
+                            </p>
+</div>
+</div>
+<!-- Feature 3: Small -->
+<div class="md:col-span-4 group glass-panel-heavy rounded-3xl p-12 hover:border-tertiary/40 transition-all duration-700 relative overflow-hidden">
+<div class="absolute -top-10 -right-10 w-40 h-40 bg-tertiary/5 blur-[60px]"></div>
+<div class="relative z-10">
+<div class="w-16 h-16 rounded-2xl bg-tertiary/10 border border-tertiary/20 flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-tertiary text-4xl">work</span>
+</div>
+<h3 class="text-2xl font-headline font-bold mb-4 text-white">Industry Matrix</h3>
+<p class="text-slate-400 leading-relaxed">
+                                Domain-specific challenges generated from a real-time database of the world's most elite hiring protocols.
+                            </p>
+</div>
+</div>
+<!-- Feature 4: Wide -->
+<div class="md:col-span-8 group glass-panel-heavy rounded-3xl p-12 hover:border-secondary/40 transition-all duration-700 relative overflow-hidden">
+<div class="absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 blur-[120px]"></div>
+<div class="flex flex-col md:flex-row gap-12 items-center">
+<div class="relative z-10 flex-1">
+<div class="w-16 h-16 rounded-2xl bg-secondary/10 border border-secondary/20 flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-secondary text-4xl">insights</span>
+</div>
+<h3 class="text-3xl font-headline font-bold mb-6 text-white group-hover:text-secondary transition-colors">Progress Visualization</h3>
+<p class="text-slate-400 text-lg leading-relaxed">
+                                    Visualize your neural growth. Our data engine maps your trajectory from recruit to industry leader using hyper-accurate modeling.
+                                </p>
+</div>
+<div class="w-full md:w-64 glass-panel rounded-2xl border-white/5 p-4 flex flex-col gap-3">
+<div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full w-[85%] bg-secondary shadow-[0_0_10px_rgba(34,211,238,0.5)]"></div>
+</div>
+<div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full w-[45%] bg-primary shadow-[0_0_10px_rgba(168,85,247,0.5)]"></div>
+</div>
+<div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full w-[70%] bg-tertiary shadow-[0_0_10px_rgba(236,72,153,0.5)]"></div>
+</div>
+<div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full w-[95%] bg-white/40"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-40 px-8 lg:px-24">
+<div class="container mx-auto">
+<div class="relative glass-panel-heavy rounded-[4rem] p-20 lg:p-32 overflow-hidden border-white/10 text-center">
+<!-- Intense Background Glows -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/30 blur-[180px] rounded-full"></div>
+<div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-[800px] h-[400px] bg-secondary/20 blur-[180px] rounded-full"></div>
+<div class="relative z-10 max-w-4xl mx-auto">
+<div class="inline-block px-6 py-2 rounded-full border border-white/10 bg-white/5 text-[10px] font-black tracking-[0.4em] uppercase text-slate-400 mb-10">
+                            Limited Alpha Access
+                        </div>
+<h2 class="text-5xl lg:text-[90px] font-headline font-black mb-10 leading-none tracking-tighter text-white">
+                            READY FOR THE <br/>
+<span class="bg-gradient-to-r from-secondary via-primary to-tertiary bg-clip-text text-transparent text-glow">NEURAL ERA?</span>
+</h2>
+<p class="text-xl lg:text-2xl text-slate-400 mb-16 font-body max-w-2xl mx-auto leading-relaxed">
+                            Join the vanguard of the 2026 workforce. Land the role you were engineered for.
+                        </p>
+<div class="flex flex-col sm:flex-row gap-8 justify-center">
+<button class="px-14 py-6 rounded-full bg-gradient-to-r from-primary to-primary-dim text-on-primary-container font-label font-black uppercase tracking-[0.3em] shadow-[0_0_50px_rgba(168,85,247,0.5)] hover:scale-105 transition-all text-sm">
+                                BEGIN PREPARATION
+                            </button>
+<button class="px-14 py-6 rounded-full glass-panel-heavy border-white/20 text-white font-label font-black uppercase tracking-[0.3em] hover:bg-white/10 transition-all text-sm">
+                                VIEW PROTOCOLS
+                            </button>
+</div>
+</div>
+<!-- Decorative elements -->
+<div class="absolute left-10 bottom-10 opacity-30 animate-pulse">
+<span class="material-symbols-outlined text-[150px] text-secondary">star_half</span>
+</div>
+<div class="absolute right-10 top-10 opacity-30 animate-pulse" style="animation-delay: 1s">
+<span class="material-symbols-outlined text-[150px] text-primary">verified</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full relative overflow-hidden border-t border-white/10 bg-slate-950/80 backdrop-blur-3xl py-24 px-8">
+<div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-16">
+<div class="col-span-2">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-lg">bolt</span>
+</div>
+<div class="text-xl font-black text-white tracking-tighter">InterviewAI</div>
+</div>
+<p class="text-slate-500 text-xs font-label leading-relaxed max-w-xs mb-8 uppercase tracking-widest">
+                    Pioneering the intersection of synthetic intelligence and professional evolution.
+                </p>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary/20 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-slate-400 hover:text-white">alternate_email</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary/20 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-slate-400 hover:text-white">hub</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<h4 class="text-primary font-label text-[10px] uppercase tracking-[0.3em] font-black">CORE SYSTEM</h4>
+<a class="text-slate-500 text-[10px] font-black uppercase tracking-widest hover:text-secondary transition-all" href="#">Neural API</a>
+<a class="text-slate-500 text-[10px] font-black uppercase tracking-widest hover:text-secondary transition-all" href="#">Avatar Engine</a>
+<a class="text-slate-500 text-[10px] font-black uppercase tracking-widest hover:text-secondary transition-all" href="#">Latency Hub</a>
+</div>
+<div class="flex flex-col gap-6">
+<h4 class="text-secondary font-label text-[10px] uppercase tracking-[0.3em] font-black">SECURITY</h4>
+<a class="text-slate-500 text-[10px] font-black uppercase tracking-widest hover:text-white transition-all" href="#">Quantum Crypt</a>
+<a class="text-slate-500 text-[10px] font-black uppercase tracking-widest hover:text-white transition-all" href="#">Privacy Link</a>
+<a class="text-slate-500 text-[10px] font-black uppercase tracking-widest hover:text-white transition-all" href="#">Data Ledger</a>
+</div>
+<div class="flex flex-col gap-6">
+<h4 class="text-tertiary font-label text-[10px] uppercase tracking-[0.3em] font-black">SUPPORT</h4>
+<a class="text-slate-500 text-[10px] font-black uppercase tracking-widest hover:text-white transition-all" href="#">Help Uplink</a>
+<a class="text-slate-500 text-[10px] font-black uppercase tracking-widest hover:text-white transition-all" href="#">Status Grid</a>
+</div>
+<div class="col-span-full border-t border-white/5 pt-12 mt-12 flex flex-col md:flex-row justify-between items-center gap-8">
+<p class="text-slate-600 font-mono text-[9px] tracking-[0.2em] uppercase">© 2026 NEON LUMI SYSTEMS. ALL NEURAL RIGHTS RESERVED.</p>
+<div class="flex gap-10">
+<span class="material-symbols-outlined text-slate-600 hover:text-primary transition-colors cursor-pointer text-xl">language</span>
+<span class="material-symbols-outlined text-slate-600 hover:text-secondary transition-colors cursor-pointer text-xl">monitoring</span>
+<span class="material-symbols-outlined text-slate-600 hover:text-tertiary transition-colors cursor-pointer text-xl">terminal</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

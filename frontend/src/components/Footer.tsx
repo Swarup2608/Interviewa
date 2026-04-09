@@ -1,16 +1,18 @@
+import { Brain, Share2, Globe } from "lucide-react";
+
 export default function Footer() {
   return (
     <footer className="bg-slate-950 w-full border-t border-primary/10 relative z-20">
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-12 px-12 py-20 max-w-screen-2xl mx-auto font-body text-sm">
         <div className="col-span-2">
           <div className="text-2xl font-black text-white flex items-center gap-2 mb-8 font-headline">
-            <span className="material-symbols-outlined text-violet-400">neurology</span>
+            <Brain className="text-violet-400" />
             AIVision
           </div>
           <p className="text-slate-400 max-w-xs mb-10 leading-relaxed">Defining the standard for AI-driven professional development and career readiness technology.</p>
           <div className="flex gap-4">
-            <a className="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-slate-400 hover:text-primary hover:bg-primary/10 hover:border hover:border-primary/30 transition-all" href="#"><span className="material-symbols-outlined">share</span></a>
-            <a className="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-slate-400 hover:text-secondary hover:bg-secondary/10 hover:border hover:border-secondary/30 transition-all" href="#"><span className="material-symbols-outlined">public</span></a>
+            <a className="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-slate-400 hover:text-primary hover:bg-primary/10 hover:border hover:border-primary/30 transition-all" href="#"><Share2 className="w-6 h-6" /></a>
+            <a className="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-slate-400 hover:text-secondary hover:bg-secondary/10 hover:border hover:border-secondary/30 transition-all" href="#"><Globe className="w-6 h-6" /></a>
           </div>
         </div>
         <div>
