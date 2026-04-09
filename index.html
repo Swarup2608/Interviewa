@@ -1,0 +1,408 @@
+<html class="dark"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "primary-container": "#ae8dff",
+                  "on-error": "#490013",
+                  "error-container": "#a70138",
+                  "tertiary-fixed": "#ff8bc5",
+                  "surface-container-lowest": "#000000",
+                  "surface-container-high": "#141f38",
+                  "tertiary": "#ff86c3",
+                  "surface-container": "#0f1930",
+                  "inverse-primary": "#6e3bd7",
+                  "on-secondary-container": "#ecfaff",
+                  "on-surface-variant": "#a3aac4",
+                  "error-dim": "#d73357",
+                  "background": "#060e20",
+                  "on-surface": "#dee5ff",
+                  "on-background": "#dee5ff",
+                  "surface-dim": "#060e20",
+                  "surface": "#060e20",
+                  "on-tertiary": "#5f003e",
+                  "tertiary-container": "#f673b7",
+                  "primary-fixed": "#ae8dff",
+                  "tertiary-fixed-dim": "#f976ba",
+                  "secondary-fixed-dim": "#48d4f3",
+                  "surface-container-highest": "#192540",
+                  "surface-bright": "#1f2b49",
+                  "secondary": "#53ddfc",
+                  "inverse-surface": "#faf8ff",
+                  "primary": "#ba9eff",
+                  "on-secondary-fixed": "#003a45",
+                  "primary-fixed-dim": "#a27cff",
+                  "surface-container-low": "#091328",
+                  "inverse-on-surface": "#4d556b",
+                  "on-primary-fixed": "#000000",
+                  "primary-dim": "#8455ef",
+                  "outline-variant": "#40485d",
+                  "outline": "#6d758c",
+                  "on-tertiary-container": "#4a002f",
+                  "on-tertiary-fixed-variant": "#73004b",
+                  "on-primary": "#39008c",
+                  "surface-variant": "#192540",
+                  "error": "#ff6e84",
+                  "tertiary-dim": "#f271b5",
+                  "on-primary-container": "#2b006e",
+                  "surface-tint": "#ba9eff",
+                  "on-secondary-fixed-variant": "#005969",
+                  "secondary-fixed": "#65e1ff",
+                  "on-primary-fixed-variant": "#370086",
+                  "on-error-container": "#ffb2b9",
+                  "secondary-dim": "#40ceed",
+                  "on-tertiary-fixed": "#360021",
+                  "on-secondary": "#004b58",
+                  "secondary-container": "#00687a"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "fontFamily": {
+                  "headline": ["Space Grotesk"],
+                  "body": ["Manrope"],
+                  "label": ["Manrope"]
+          },
+          "animation": {
+            'float-slow': 'float 8s ease-in-out infinite',
+            'float-medium': 'float 6s ease-in-out infinite',
+            'float-fast': 'float 4s ease-in-out infinite',
+            'pulse-glow': 'pulse-glow 4s ease-in-out infinite',
+          },
+          "keyframes": {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-20px)' },
+            },
+            'pulse-glow': {
+              '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
+              '50%': { opacity: '0.7', transform: 'scale(1.1)' },
+            }
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body { background-color: #060e20; color: #dee5ff; font-family: 'Manrope', sans-serif; overflow-x: hidden; }
+    
+    .glass-card { 
+      background: rgba(25, 37, 64, 0.45); 
+      backdrop-filter: blur(40px); 
+      -webkit-backdrop-filter: blur(40px);
+      border: 1px solid rgba(186, 158, 255, 0.2); 
+      box-shadow: 
+        inset 0 1px 1px rgba(255, 255, 255, 0.1),
+        0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+    
+    .neon-glow-primary { box-shadow: 0 0 30px rgba(186, 158, 255, 0.25); }
+    .neon-glow-secondary { box-shadow: 0 0 30px rgba(83, 221, 252, 0.25); }
+    
+    .text-gradient-primary { 
+      background: linear-gradient(135deg, #ba9eff, #53ddfc, #ff86c3); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+      background-size: 200% auto;
+    }
+    
+    .bg-gradient-cta { background: linear-gradient(135deg, #8455ef, #ba9eff, #53ddfc); background-size: 200% auto; }
+    .bg-gradient-cta:hover { background-position: right center; }
+    
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+
+    .grid-bg {
+      background-image: linear-gradient(rgba(186, 158, 255, 0.05) 1px, transparent 1px), 
+                        linear-gradient(90deg, rgba(186, 158, 255, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+
+    .light-trail {
+      position: absolute;
+      width: 1px;
+      height: 100px;
+      background: linear-gradient(to bottom, transparent, #ba9eff, transparent);
+      animation: rain 3s linear infinite;
+    }
+
+    @keyframes rain {
+      0% { transform: translateY(-100vh); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body class="selection:bg-primary/30 relative">
+<!-- Dynamic Background Layers -->
+<div class="fixed inset-0 pointer-events-none z-0">
+<div class="grid-bg absolute inset-0 opacity-20"></div>
+<div class="absolute top-[10%] left-[10%] w-[600px] h-[600px] bg-primary-dim/20 rounded-full blur-[150px] animate-pulse-glow"></div>
+<div class="absolute bottom-[20%] right-[5%] w-[500px] h-[500px] bg-secondary-container/15 rounded-full blur-[130px] animate-pulse-glow" style="animation-delay: -2s"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-tertiary-container/5 rounded-full blur-[180px]"></div>
+<!-- Neon Trails -->
+<div class="light-trail" style="left: 15%; animation-delay: 0s; opacity: 0.3"></div>
+<div class="light-trail" style="left: 45%; animation-delay: 1.5s; opacity: 0.2"></div>
+<div class="light-trail" style="left: 85%; animation-delay: 0.7s; opacity: 0.4"></div>
+</div>
+<!-- TopNavBar Implementation -->
+<nav class="fixed top-0 w-full z-[100] bg-slate-950/40 backdrop-blur-2xl border-b border-outline-variant/10">
+<div class="flex justify-between items-center px-8 py-4 max-w-screen-2xl mx-auto font-['Space_Grotesk'] tracking-tight">
+<div class="text-2xl font-bold text-slate-100 flex items-center gap-2">
+<span class="material-symbols-outlined text-violet-400" data-icon="neurology">neurology</span>
+        AIVision
+      </div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-violet-300 font-bold border-b-2 border-cyan-400/50 pb-1" href="#">Product</a>
+<a class="text-slate-300 hover:text-white transition-colors" href="#">Solutions</a>
+<a class="text-slate-300 hover:text-white transition-colors" href="#">Intelligence</a>
+<a class="text-slate-300 hover:text-white transition-colors" href="#">Pricing</a>
+</div>
+<button class="bg-gradient-cta text-on-primary font-bold px-6 py-2.5 rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(186,158,255,0.3)] hover:shadow-[0_0_30px_rgba(186,158,255,0.5)] hover:scale-105 active:scale-95">
+        Start Interview
+      </button>
+</div>
+</nav>
+<main class="relative z-10">
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center pt-24 overflow-hidden px-8 md:px-16">
+<div class="max-w-screen-2xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full">
+<div class="z-20">
+<span class="inline-block px-4 py-1.5 rounded-full border border-primary/20 text-secondary font-label text-sm mb-6 bg-surface-container-high/60 backdrop-blur-md">
+            Next-Gen AI Career Prep
+          </span>
+<h1 class="font-headline text-7xl md:text-9xl font-extrabold tracking-tighter leading-[0.95] text-on-background mb-8">
+            Ace Your <br/> <span class="text-gradient-primary">Interviews</span> <br/> <span class="text-white">with AI</span>
+</h1>
+<p class="font-body text-xl text-on-surface-variant max-w-lg mb-12 leading-relaxed opacity-90">
+            Practice real-world interview scenarios with our intelligent simulator. Get instant feedback on your tone, body language, and response quality.
+          </p>
+<div class="flex flex-wrap gap-5">
+<button class="bg-gradient-cta px-10 py-5 rounded-2xl font-headline font-bold text-xl text-on-primary flex items-center gap-3 group shadow-[0_0_40px_rgba(186,158,255,0.3)] transition-all">
+              Start Interview
+              <span class="material-symbols-outlined transition-transform group-hover:translate-x-2" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<button class="px-10 py-5 rounded-2xl font-headline font-bold text-xl border border-outline-variant/40 bg-white/5 backdrop-blur-xl hover:bg-white/10 transition-all">
+              See Demo
+            </button>
+</div>
+</div>
+<div class="relative z-20 flex justify-center items-center">
+<!-- Hero Visual Container -->
+<div class="relative w-full max-w-lg">
+<!-- Multi-layered Visual -->
+<div class="relative z-20 w-full aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl border border-primary/30 group">
+<div class="absolute inset-0 bg-primary/10 mix-blend-overlay z-10"></div>
+<img class="w-full h-full object-cover grayscale brightness-90 contrast-125 transition-transform duration-700 group-hover:scale-110" data-alt="Futuristic glowing AI interface portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFYPxmszddXI_-nV0_WG_5ucUliGn6GEcIgKNsSpn9EWUY6N1p4Nqt7NTDlluHZWmyO6Ykb72iTRp6QMDKrmtHpQN98QcDiTUSDqeZKOr5BVap2p8296YlyESEWv2JMCHUzwCWMX_rQOjwoF89HStXEfqOA2G90cn7-Ipm0mw96pmuHdOLBJtOpkvxcYrO-VbPNXlwISQquo-OQfzpAtfyvfTSwI2lAGZv_Z0LN5M3jNXzj-zjqTPj2jvg6they7BL6d2KnvxejXU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-primary/5"></div>
+<!-- Scanning Animation Line -->
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-secondary to-transparent blur-sm animate-[scan_4s_linear_infinite]"></div>
+</div>
+<!-- Extra Floating UI Elements -->
+<div class="absolute -top-12 -right-8 glass-card p-5 rounded-3xl w-64 animate-float-slow z-30">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-secondary shadow-[0_0_8px_#53ddfc]"></div>
+<span class="text-xs font-bold text-secondary tracking-widest uppercase">Confidence Score</span>
+</div>
+<span class="text-[10px] text-on-surface-variant">Live</span>
+</div>
+<div class="text-3xl font-headline font-bold text-on-surface">94.8%</div>
+<div class="mt-3 h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-[94.8%] shadow-[0_0_15px_#53ddfc]"></div>
+</div>
+</div>
+<div class="absolute bottom-12 -left-16 glass-card p-6 rounded-3xl w-72 backdrop-blur-3xl animate-float-medium z-40">
+<div class="flex items-center gap-2 mb-4">
+<div class="p-1.5 bg-primary/20 rounded-lg">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="mic">mic</span>
+</div>
+<span class="text-xs font-bold text-primary-container uppercase tracking-wide">AI Tone Analysis</span>
+</div>
+<p class="text-sm font-body text-on-surface-variant leading-relaxed italic border-l-2 border-primary/30 pl-3">
+            "Tone: Highly Professional. Pacing: Optimal. Recommendation: Project more warmth in intros."
+          </p>
+</div>
+<div class="absolute top-1/2 -translate-y-1/2 -right-20 glass-card p-4 rounded-2xl flex items-center gap-4 animate-float-fast z-10 opacity-90 scale-90">
+<div class="p-2 bg-tertiary-container/30 rounded-xl">
+<span class="material-symbols-outlined text-tertiary" data-icon="leaderboard">leaderboard</span>
+</div>
+<div>
+<div class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Market Readiness</div>
+<div class="font-bold text-lg text-on-surface">Top 3% Tier</div>
+</div>
+</div>
+<div class="absolute -bottom-6 right-8 glass-card py-3 px-6 rounded-2xl flex items-center gap-3 animate-float-medium z-30 border-secondary/20">
+<span class="material-symbols-outlined text-secondary text-lg" data-icon="check_circle">check_circle</span>
+<span class="text-xs font-bold tracking-wide">Interview Progress: 80% Complete</span>
+</div>
+<!-- Background Decorative Glow -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-primary/20 rounded-full blur-[100px] -z-10 animate-pulse"></div>
+</div>
+</div>
+</div>
+<style>
+  @keyframes scan {
+    0% { top: 0%; opacity: 0; }
+    50% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+  }
+</style>
+</section>
+<!-- Features Bento Grid -->
+<section class="py-32 px-8 md:px-16 relative">
+<div class="max-w-screen-2xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
+<div class="max-w-2xl">
+<span class="text-primary font-bold text-sm tracking-widest uppercase mb-4 block">Engineered for success</span>
+<h2 class="font-headline text-6xl font-bold mb-6 tracking-tight">Master Every <br/><span class="text-gradient-primary">Interaction</span></h2>
+<p class="font-body text-lg text-on-surface-variant/80">Our multi-layered neural engine analyzes biometric data, semantic structures, and delivery patterns to provide unparalleled growth insights.</p>
+</div>
+<button class="text-secondary font-bold flex items-center gap-3 hover:gap-5 transition-all text-lg group">
+            Explore All Features <span class="material-symbols-outlined transition-transform group-hover:translate-x-1" data-icon="trending_flat">trending_flat</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-6 grid-rows-2 gap-8 h-auto md:h-[650px]">
+<!-- Feature 1: Large -->
+<div class="md:col-span-3 md:row-span-2 glass-card rounded-[2.5rem] p-12 flex flex-col justify-between group overflow-hidden relative">
+<div class="absolute -top-20 -right-20 w-80 h-80 bg-primary-dim/20 rounded-full blur-[80px] group-hover:bg-primary-dim/30 transition-all duration-700"></div>
+<div class="relative z-10">
+<div class="w-20 h-20 rounded-3xl bg-primary-dim/15 border border-primary/20 flex items-center justify-center mb-10 shadow-lg">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="videocam">videocam</span>
+</div>
+<h3 class="font-headline text-4xl font-bold mb-6">Real-time AI interviews</h3>
+<p class="font-body text-on-surface-variant text-xl leading-relaxed">Experience hyper-realistic video interviews where the AI adapts its questions dynamically based on your previous responses and emotional cues.</p>
+</div>
+<div class="relative mt-10 rounded-3xl overflow-hidden border border-white/10 group-hover:border-primary/30 transition-all">
+<img class="w-full h-56 object-cover opacity-50 group-hover:opacity-100 transition-all duration-700 scale-105 group-hover:scale-100" data-alt="Team of diverse professionals collaborating" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNQCUs6dV7zBII2rYqFA-fKxdlRtrW5ini8fhT9-GhU7DU6ythb73XY_FpuOb3s7W2w9sjq3fNoKnroSpgYAt4MAGZZc5nRsta3iSkVJbjS_64D63Fjk3CDOs8VC6cnij1ArBwlhiYBEuoCw0d6ctZqkD6xqENYxjhQIN7PmmxTn6SKgHke-Q-DVstVVlH-n4ToFV4sXpcPlrX4RAvZOQVmDqW3gYeOYylSrKk24qBFGquTl9eTx6lemBLCbPr2sT6EwP4_QBjq5g"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
+</div>
+</div>
+<!-- Feature 2 -->
+<div class="md:col-span-3 glass-card rounded-[2.5rem] p-12 flex items-center gap-10 group relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-secondary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="w-20 h-20 shrink-0 rounded-3xl bg-secondary-container/15 border border-secondary/20 flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-secondary text-4xl" data-icon="bolt">bolt</span>
+</div>
+<div>
+<h3 class="font-headline text-3xl font-bold mb-4">Smart feedback system</h3>
+<p class="font-body text-on-surface-variant text-lg">Comprehensive breakdown of performance, from micro-expressions to technical accuracy and industry benchmarks.</p>
+</div>
+</div>
+<!-- Feature 3 -->
+<div class="md:col-span-1.5 glass-card rounded-[2.5rem] p-8 flex flex-col justify-center text-center group border-tertiary/20 hover:border-tertiary/40 transition-all">
+<div class="w-16 h-16 rounded-2xl bg-tertiary-container/10 mx-auto mb-6 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-4xl" data-icon="work">work</span>
+</div>
+<h3 class="font-headline text-xl font-bold">Role-based contexts</h3>
+</div>
+<!-- Feature 4 -->
+<div class="md:col-span-1.5 glass-card rounded-[2.5rem] p-8 flex flex-col justify-center text-center group border-primary/20 hover:border-primary/40 transition-all">
+<div class="w-16 h-16 rounded-2xl bg-primary-container/10 mx-auto mb-6 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="analytics">analytics</span>
+</div>
+<h3 class="font-headline text-xl font-bold">Progress analytics</h3>
+</div>
+</div>
+</div>
+</section>
+<!-- Highlight Section -->
+<section class="py-24 px-8 md:px-16 relative overflow-hidden">
+<div class="max-w-6xl mx-auto relative glass-card rounded-[4rem] p-16 md:p-28 text-center overflow-hidden border-none shadow-[0_0_80px_rgba(132,85,239,0.15)]">
+<!-- Background Glow Effects -->
+<div class="absolute inset-0 bg-gradient-to-br from-primary-dim/25 via-background to-secondary-container/20"></div>
+<div class="absolute -top-32 -left-32 w-96 h-96 bg-primary blur-[160px] opacity-20 animate-pulse"></div>
+<div class="absolute -bottom-32 -right-32 w-96 h-96 bg-secondary blur-[160px] opacity-15 animate-pulse" style="animation-delay: -1s"></div>
+<div class="relative z-10">
+<h2 class="font-headline text-6xl md:text-8xl font-black tracking-tight mb-10">
+            Ready to Ace Your <br/> <span class="text-gradient-primary">Next Role?</span>
+</h2>
+<p class="font-body text-2xl text-on-surface-variant/90 mb-14 max-w-3xl mx-auto leading-relaxed">
+            Join 50,000+ candidates who have accelerated their careers using AIVision's deep-learning interview environment.
+          </p>
+<div class="relative inline-block">
+<div class="absolute -inset-1 bg-gradient-to-r from-primary via-secondary to-tertiary rounded-full blur opacity-40 group-hover:opacity-100 transition-all"></div>
+<button class="relative bg-gradient-cta px-16 py-6 rounded-full font-headline font-bold text-2xl text-on-primary shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300">
+              Start Your Free Trial
+            </button>
+</div>
+<div class="mt-12 flex justify-center items-center gap-6 text-sm text-on-surface-variant font-label">
+<span class="flex -space-x-3">
+<img class="w-10 h-10 rounded-full border-2 border-surface-container object-cover" data-alt="User profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC39my1sMU3XCraBGZ0A8jZgixf-qUnepMbtRg2TfgqSL6HvjdDlWUOoGzUu-BgaVmIbvoBrh4A9ux-9f5TVvrMhlB1LBWmnc8pGccaaXuTxAhsNoOmut2AGVDhk4-0H4qn7hEP_8qww6MIPcCka-mJwqVq0qsJKccNYf9kJCicHvw86pOInOmhT_OPLhxtEzUua-aTgRzTxjwaOMf8BHFVBe9PSbQM7kofyiXxt-m8asdX0PgZeDsoDeoSN86UkwDL5RBbuTjnQkc"/>
+<img class="w-10 h-10 rounded-full border-2 border-surface-container object-cover" data-alt="User profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhZQ32aUj0bhnB3f-FfNoxzYP4dVZjw5Y3oi2mSmwjXE_NyyWkBvka0U6X3wIwJ9pn5_4Ux1Ix5cC-S9nQni-Vs6JGI6yUH-dZtY0ni0qNKpfqCDR0-DlOJAlVYSzt8rLWGoMqYUtWq0ZwW6_alJ6V0GLLwJ6IP8nUBaREO3SNif-N7gdN4j0xzhALiqy2aUjy9HMiUaHzfeXWv6NG9XBuLsPGEGx0GQI6mS9I_z67sklkhPnfQEJS0sk3kLEvUYQRCwqlyEM-n1o"/>
+<img class="w-10 h-10 rounded-full border-2 border-surface-container object-cover" data-alt="User profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdkH0OlANKLQYnIwSFpG1mg0NFBaDYNdu4cjgOvQ-i6AIkM_oJ4uru53UcHs9cBDySE7jcKDKejSsDL9BBjOir08Doy8D-W1h2glPPmiL05aSdYvQTiOZIOi8bwruMxesq8OKn6O_B1T7I2lUPIfAIthKCTa_8-vSVIMdY9ufaUB39Tn6G9QgjCyEGquNTwK_u_ijlgcScqYQWN2-vn5muXvloA7GLrVyvJcoqgFr_MYupwTaiZ8nXKG0OC9VkBf851ubsO5kZt1Q"/>
+</span>
+<span class="font-bold">Trusted by 50,000+ professionals globally</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Implementation -->
+<footer class="bg-slate-950 w-full border-t border-primary/10 relative z-20">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-12 px-12 py-20 max-w-screen-2xl mx-auto font-['Manrope'] text-sm">
+<div class="col-span-2">
+<div class="text-2xl font-black text-white flex items-center gap-2 mb-8">
+<span class="material-symbols-outlined text-violet-400" data-icon="neurology">neurology</span>
+          AIVision
+        </div>
+<p class="text-slate-400 max-w-xs mb-10 leading-relaxed">Defining the standard for AI-driven professional development and career readiness technology.</p>
+<div class="flex gap-4">
+<a class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-slate-400 hover:text-primary hover:bg-primary/10 hover:border hover:border-primary/30 transition-all" href="#"><span class="material-symbols-outlined" data-icon="share">share</span></a>
+<a class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-slate-400 hover:text-secondary hover:bg-secondary/10 hover:border hover:border-secondary/30 transition-all" href="#"><span class="material-symbols-outlined" data-icon="public">public</span></a>
+</div>
+</div>
+<div>
+<h4 class="font-bold text-white mb-8 uppercase tracking-widest text-xs">Product</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-400 hover:text-secondary transition-colors" href="#">Simulator</a></li>
+<li><a class="text-slate-400 hover:text-secondary transition-colors" href="#">Analytics</a></li>
+<li><a class="text-slate-400 hover:text-secondary transition-colors" href="#">Pricing</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-white mb-8 uppercase tracking-widest text-xs">Resources</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-400 hover:text-secondary transition-colors" href="#">Community</a></li>
+<li><a class="text-slate-400 hover:text-secondary transition-colors" href="#">Insights Hub</a></li>
+<li><a class="text-slate-400 hover:text-secondary transition-colors" href="#">API Reference</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-white mb-8 uppercase tracking-widest text-xs">Company</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-400 hover:text-secondary transition-colors" href="#">Our Mission</a></li>
+<li><a class="text-slate-400 hover:text-secondary transition-colors" href="#">Careers</a></li>
+<li><a class="text-slate-400 hover:text-secondary transition-colors" href="#">Newsroom</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-white mb-8 uppercase tracking-widest text-xs">Support</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-400 hover:text-secondary transition-colors" href="#">Help Center</a></li>
+<li><a class="text-slate-400 hover:text-secondary transition-colors" href="#">Security</a></li>
+<li><a class="text-slate-400 hover:text-secondary transition-colors" href="#">Status</a></li>
+</ul>
+</div>
+<div class="col-span-full pt-16 mt-8 border-t border-white/5 text-center md:text-left flex flex-col md:flex-row justify-between items-center text-slate-500 font-label">
+<p>© 2025 AIVision Intelligence. Engineered for the future of work.</p>
+<div class="flex gap-8 mt-6 md:mt-0">
+<span class="hover:text-primary transition-colors cursor-pointer">Privacy Protocol</span>
+<span class="hover:text-primary transition-colors cursor-pointer">Terms of Core</span>
+<span class="hover:text-primary transition-colors cursor-pointer">Cookies</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
